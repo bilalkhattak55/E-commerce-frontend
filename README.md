@@ -1,46 +1,116 @@
-# Getting Started with Create React App and Redux
+1===========================;
+create app with redux toolkit;
+npx create-react-app my-app --template redux
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+2============================;
+install tailwind css;
+goto tailwind site and check from there;
 
-## Available Scripts
+3=============================;
+make a product-list folder which is a copy of counter in features folder;
+insert default keyword;
 
-In the project directory, you can run:
+4=============================;
+copy an ecommerce productlist and paste it in productList.js in product-list/features folder;
+install it and paste in plugins;
+plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+  ],
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+5==============================;
+copy and paste the category filters code in productList.js in product-list/features folder;
+install it and paste in plugins;
+plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/forms'),
+  ],
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+6===============================;
+we have to install two more depedencies;
+npm install @headlessui/react @heroicons/react
 
-### `npm run build`
+7================================;
+delete subcategories;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+8========================;
+search stacked layouts in tailwind
+then,
+make new folder naming navbar
+then,
+copy paste navbar from tailwind
+then,
+put chilldren in props of navbar
+const Navbar = ({ children }) => {
+   <main>
+          <div className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+            {/* Your content */}
+            {children}
+          </div>
+    </main>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+then,
+make a pages folder and Home.js init;
+import Navbar from "../features/navbar/Navbar";
+import ProductList from "../features/product-list/ProductList";
+const Home = () => {
+  return (
+    <div>
+        <Navbar>
+            <ProductList></ProductList>
+        </Navbar>
+    </div>
+  )
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+then,
+import Home in app.js;
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+9==========================================;
+make LoginPage.js and SignupPage.js in pages folder,
+then,
+make auth folder in features and Login.js init and copy counterApi.js and counterSlice.js and paste in auth folder
+then,
+make components folder in auth folder and move Login.js there and also make signup.js there;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+10==========================================;
+now we are setting router for our app,
+npm install reac-router-dom;
+copy router functionalty from react router dom docs
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import "./index.css";
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home></Home>,
+  },
+  {
+    path: "/login",
+    element: <LoginPage></LoginPage>,
+  },
+  {
+    path: "/signup",
+    element: <SignupPage></SignupPage>,
+  },
+]);
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+function App() {
+  return (
+    <div className="App">
+      <RouterProvider router={router} />
+    </div>
+  );
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+
